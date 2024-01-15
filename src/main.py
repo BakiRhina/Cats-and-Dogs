@@ -14,11 +14,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print(f"Training on device: {device}")
 
 
-# Hyperparameters
-batch_size = 8
-lr = 0.0001
-momentum = 0.9
-epochs = 2
+
 
 # Transforms for training set
 train_transform = transforms.Compose([
@@ -29,24 +25,21 @@ train_transform = transforms.Compose([
 # Data Loader with transformations, batch size and shuffle
 train_path = PATH + "/train"
 train_set = datasets.ImageFolder(root=train_path, transform=train_transform)
+
+
+# Hyperparameters
+batch_size = 4
+lr = 0.0001
+momentum = 0.9
+epochs = 2
+
+# Images grouped in batch_sizes and sent to the network
 train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
-
-'''
-# Image test #
-# - Manually iterates through the batch and shows the first image.
-# - permute() changes the order of dimensions so the Channel (RGB) is in the last position.
-images, labels = next(iter(train_loader))
-plt.imshow(images[0].permute(1,2,0).numpy())
-plt.show() # No need if using notebooks
-
-# Debug tensors and numpy image representation
-print("TENSOR: ", images[1])
-print("NUMPY: ", images[1].numpy())
-'''
 
 cnn = CNN(batch_size).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = opt.SGD(cnn.parameters(), lr, momentum)
+loss_values = []
 
 for epoch in range(epochs):
   print(f"Epoch: {epoch}")
@@ -64,13 +57,14 @@ for epoch in range(epochs):
     # print statistics
     if i % 50 == 49:
       running_loss += loss.item()
-      print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2:.3f}')
+      print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 50:.3f}')
+      loss_values.append(running_loss)
       running_loss = 0.0
 
 print('Finished Training')
 
 
-model_filename = 'your_model.pth'
+model_filename = 'model_1b.pth'
 model_path = f'models/{model_filename}'
 
 torch.save(cnn.state_dict(), model_path)
