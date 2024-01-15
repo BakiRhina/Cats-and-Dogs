@@ -17,8 +17,9 @@ train_set = datasets.ImageFolder(root=train_path, transform=train_transform)
 train_loader = DataLoader(train_set, batch_size=16, shuffle=True)
 
 '''
-# Image test. Manually iterates through the batch and shows the first image.
-# permute() changes the order of dimensions so the Channel (RGB) is in the last position.
+# Image test #
+# - Manually iterates through the batch and shows the first image.
+# - permute() changes the order of dimensions so the Channel (RGB) is in the last position.
 images, labels = next(iter(train_loader))
 plt.imshow(images[0].permute(1,2,0).numpy())
 plt.show() # No need if using notebooks
