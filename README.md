@@ -83,6 +83,51 @@ label = 0 if "cat" in filename else 1 if "dog" in filename else None
 
 Adjust the parsing logic based on the naming conventions in your dataset. This manual approach is effective when automatic labeling via folder structure is not feasible.
 
+## GPU Configuration for CUDA Support
+
+### Checking GPU Availability
+
+Before utilizing CUDA GPUs with PyTorch, it's crucial to ensure that your device supports CUDA and that it is available. Use the following commands to check for GPU availability:
+
+```bash
+import torch
+
+# Check if CUDA is available
+cuda_available = torch.cuda.is_available()
+print("CUDA Available:", cuda_available)
+
+# Get the number of available GPUs
+num_gpus = torch.cuda.device_count()
+print("Number of GPUs:", num_gpus)
+```
+
+### Verifying CUDA Version
+
+If CUDA is not available or you encounter compatibility issues, it's essential to check your CUDA version using the following command:
+
+```bash
+nvidia-smi
+```
+
+### Handling CUDA Version Compatibility Issues
+
+1. **Check CUDA Version:**
+   - Ensure that your CUDA version is compatible with PyTorch. Torch is compatible with CUDA versions under 11.8.
+
+2. **Uninstall CUDA Version**
+   - If your CUDA version is higher than 11.8, uninstall CUDA. In windows you can do that from "Add or remove programs" with ease. In Linux you can use:
+```bash
+sudo apt-get purge cuda-<your_version>
+```
+
+3. **Install CUDA 11.8:**
+   - Install CUDA 11.8, as it is compatible with PyTorch. Refer to the NVIDIA website for installation instructions: [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-11-8-0-download-archive)
+
+### Installing PyTorch with CUDA Support
+
+After ensuring CUDA compatibility, install PyTorch with CUDA support. CHAT GPT recommends following the official PyTorch installation guide, which provides detailed instructions tailored to your system configuration. You can find the guide at [PyTorch - Get Started Locally](https://pytorch.org/get-started/locally/).
+
+By carefully managing CUDA compatibility and installing PyTorch correctly, you can leverage the power of GPU acceleration for your deep learning tasks.
 
 ## Conclusion
 Understanding and carefully handling the shape of the fully connected layer input (`fc1`) is essential for the successful implementation of a CNN for binary cat vs. dog classification. Regularly visualize tensor shapes during development to ensure proper alignment in your network architecture.
