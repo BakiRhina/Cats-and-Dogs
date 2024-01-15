@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
+from modules.cnn import CNN
 
 # Root path to datasets
 PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
+
 
 # Transforms for training set
 train_transform = transforms.Compose([
