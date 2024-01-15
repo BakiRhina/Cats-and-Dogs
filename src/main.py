@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import torch.optim as opt
+import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from modules.cnn import CNN
@@ -6,6 +8,11 @@ from modules.cnn import CNN
 # Root path to datasets
 PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
 
+# Hyperparameters
+batch_size = 16
+lr = 0.001
+momentum = 0.9
+epochs = 2
 
 # Transforms for training set
 train_transform = transforms.Compose([
@@ -30,3 +37,41 @@ plt.show() # No need if using notebooks
 print("TENSOR: ", images[1])
 print("NUMPY: ", images[1].numpy())
 '''
+
+cnn = CNN(batch_size)
+criterion = nn.CrossEntropyLoss()
+optimizer = opt.SGD(cnn.parameters(), lr, momentum)
+
+for epoch in range(epochs):
+  running_loss = 0.0
+  for i, data in enumerate(train_loader, 0):
+    imgs, labels = data
+    '''
+    # Debugging of shapes and lengths
+    print(len(imgs))
+    print(len(imgs[0]))
+    print(len(imgs[0][0]))
+    print(len(imgs[0][0][0]))
+    print(imgs[0][0][0])
+    # Set the parameter gradients to 0
+    optimizer.zero_grad()
+    '''
+
+    # Forward + backward + optimize
+    output = cnn(imgs)
+    loss = criterion(output, labels)
+
+    loss.backward()
+    optimizer.step()
+
+    # print statistics
+    running_loss += loss.item()
+    if i % 10 == 9:    # print every 2000 mini-batches
+        print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2000:.3f}')
+        running_loss = 0.0
+
+print('Finished Training')
+
+
+
+
