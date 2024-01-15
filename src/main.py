@@ -15,8 +15,8 @@ print(f"Training on device: {device}")
 
 
 # Hyperparameters
-batch_size = 16
-lr = 0.001
+batch_size = 8
+lr = 0.0001
 momentum = 0.9
 epochs = 2
 
@@ -29,7 +29,7 @@ train_transform = transforms.Compose([
 # Data Loader with transformations, batch size and shuffle
 train_path = PATH + "/train"
 train_set = datasets.ImageFolder(root=train_path, transform=train_transform)
-train_loader = DataLoader(train_set, batch_size=16, shuffle=True)
+train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
 
 '''
 # Image test #
@@ -49,6 +49,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = opt.SGD(cnn.parameters(), lr, momentum)
 
 for epoch in range(epochs):
+  print(f"Epoch: {epoch}")
   running_loss = 0.0
   for i, data in enumerate(train_loader, 0):
     imgs, labels = data
@@ -61,12 +62,17 @@ for epoch in range(epochs):
     optimizer.step()
 
     # print statistics
-    running_loss += loss.item()
-    print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2:.3f}')
-    running_loss = 0.0
+    if i % 50 == 49:
+      running_loss += loss.item()
+      print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2:.3f}')
+      running_loss = 0.0
 
 print('Finished Training')
 
 
+model_filename = 'your_model.pth'
+model_path = f'models/{model_filename}'
+
+torch.save(cnn.state_dict(), model_path)
 
 

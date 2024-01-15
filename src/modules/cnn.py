@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class CNN(nn.Module):
-  def __init__(self, batch_size, n_channels=3):
+  def __init__(self, batch_size):
     super().__init__()
     self.conv1 = nn.Conv2d(3,6,5) # (N_in_channels, N_out_channels, kernel_size)
     self.conv2 = nn.Conv2d(6,16,5)
