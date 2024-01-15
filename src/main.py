@@ -11,7 +11,7 @@ PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
 
 # Select GPU if available (cuda toolkit <= 11.8 for pytorch)
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-print(device)
+print(f"Training on device: {device}")
 
 
 # Hyperparameters
@@ -30,7 +30,6 @@ train_transform = transforms.Compose([
 train_path = PATH + "/train"
 train_set = datasets.ImageFolder(root=train_path, transform=train_transform)
 train_loader = DataLoader(train_set, batch_size=16, shuffle=True)
-print(train_loader.dataset)
 
 '''
 # Image test #
@@ -45,7 +44,7 @@ print("TENSOR: ", images[1])
 print("NUMPY: ", images[1].numpy())
 '''
 
-cnn = CNN(batch_size)
+cnn = CNN(batch_size).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = opt.SGD(cnn.parameters(), lr, momentum)
 
@@ -53,6 +52,7 @@ for epoch in range(epochs):
   running_loss = 0.0
   for i, data in enumerate(train_loader, 0):
     imgs, labels = data
+    imgs, labels = imgs.to(device), labels.to(device)
 
     # Forward + backward + optimize
     output = cnn(imgs)
@@ -62,9 +62,8 @@ for epoch in range(epochs):
 
     # print statistics
     running_loss += loss.item()
-    if i % 2 == 1:    # print every 2000 mini-batches
-        print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2:.3f}')
-        running_loss = 0.0
+    print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2:.3f}')
+    running_loss = 0.0
 
 print('Finished Training')
 
