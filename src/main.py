@@ -1,3 +1,4 @@
+import torch
 import matplotlib.pyplot as plt
 import torch.optim as opt
 import torch.nn as nn
@@ -7,6 +8,11 @@ from modules.cnn import CNN
 
 # Root path to datasets
 PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
+
+# Select GPU if available (cuda toolkit <= 11.8 for pytorch)
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+print(device)
+
 
 # Hyperparameters
 batch_size = 16
@@ -51,7 +57,6 @@ for epoch in range(epochs):
     # Forward + backward + optimize
     output = cnn(imgs)
     loss = criterion(output, labels)
-
     loss.backward()
     optimizer.step()
 
