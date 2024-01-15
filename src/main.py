@@ -22,5 +22,8 @@ train_loader = DataLoader(train_set, batch_size=16, shuffle=True)
 images, labels = next(iter(train_loader))
 plt.imshow(images[0].permute(1,2,0).numpy())
 plt.show() # No need if using notebooks
-'''
 
+# Debug tensors and numpy image representation
+print("TENSOR: ", images[1])
+print("NUMPY: ", images[1].numpy())
+'''
