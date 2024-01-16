@@ -13,9 +13,6 @@ PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print(f"Training on device: {device}")
 
-
-
-
 # Transforms for training set
 train_transform = transforms.Compose([
   transforms.Resize((256,256)),
