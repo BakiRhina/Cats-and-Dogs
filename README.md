@@ -1,5 +1,5 @@
 # Cats and Dogs Binary Classification
-
+----
 ## Overview
 This project focuses on binary label prediction, specifically distinguishing between cats and dogs using Convolutional Neural Networks (CNNs). The readme provides essential information and insights to understand and implement the neural network architecture, with a specific emphasis on handling the shape of the fully connected layer (`fc1`).
 
@@ -52,6 +52,8 @@ print(x.shape)  # This is the shape required for fc1 input
 
 By inspecting the shapes during each step, you can ensure that the input to `fc1` aligns with your network architecture and image dimensions.
 
+----
+
 ## Data Organization Tips
 
 ### Using DataLoader from Torch
@@ -82,6 +84,8 @@ label = 0 if "cat" in filename else 1 if "dog" in filename else None
 ```
 
 Adjust the parsing logic based on the naming conventions in your dataset. This manual approach is effective when automatic labeling via folder structure is not feasible.
+
+----
 
 ## GPU Configuration for CUDA Support
 
