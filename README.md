@@ -129,14 +129,14 @@ After ensuring CUDA compatibility, install PyTorch with CUDA support. CHAT GPT r
 
 By carefully managing CUDA compatibility and installing PyTorch correctly, you can leverage the power of GPU acceleration for your deep learning tasks.
 
+----
+
 # Notes and useful information
 
-- Here I put some examples to delete rows in a pandas dataframe based on the columns' value:
 
-```markdown
 ### Deleting Rows Based on Column Value in Pandas DataFrames
 
-When working with pandas DataFrames in Python, it is often necessary to delete rows based on certain conditions in one or more columns. This can be achieved using various methods, and here are some quick examples:
+- Here I put some examples to delete rows in a pandas dataframe based on the columns' value:
 
 #### Example 1: Using `drop()` to Delete Rows Based on Column Value
 
