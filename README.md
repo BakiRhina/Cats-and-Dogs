@@ -1,7 +1,22 @@
 # Cats and Dogs Binary Classification
-----
+
 ## Overview
 This project focuses on binary label prediction, specifically distinguishing between cats and dogs using Convolutional Neural Networks (CNNs). The readme provides essential information and insights to understand and implement the neural network architecture, with a specific emphasis on handling the shape of the fully connected layer (`fc1`).
+
+----
+
+## Experimental flow
+
+1. Explore the data.
+
+Here we will analyse the data that has been given to us. How many samples, if there are **null values**, **repeated values**, the information we could extract from the **filenames**, if the **data is balanced or unbalanaced**, dimensions of the images (**width**,**height**, **aspect ratio**, **channels**, ...), distorsions, shape,...
+
+2. Data preprocessing.
+
+Once we know the features of our dataset, we will preprocess it. For that, outliers will be removed.
+An outlier is an object in the dataset that would cause distorsions during the training or its not of interest (massive values, neither cats or dogs (*although this is difficult to find unless checking manually or with another model already trained*)...).
+
+
 
 ## Neural Network Architecture
 The neural network architecture consists of convolutional layers followed by max-pooling layers, leading to fully connected layers for classification. The key components are as follows:
