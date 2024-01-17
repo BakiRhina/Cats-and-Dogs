@@ -20,12 +20,14 @@ Here we will analyse the data that has been given to us. How many samples, if th
 - Small images don't give much information and usually most of the details are lost when upscaling them. Bigger images, on the other hand, can also loose important details if excessive downscaling is applied, although it conserves them better than smaller images.
 
 
-
 2. Data preprocessing.
 
 Once we know our datasets' features, we will proceed to preprocess it. Therefore, outliers will be removed.
 
 An outlier is an object in the dataset that would cause distorsions during the training or it is not of interest (massive values, neither cats or dogs (*although these are difficult to find unless checking manually or with another model already trained*)...).
+
+When resampling images, see the following figure:
+
 
 
 
