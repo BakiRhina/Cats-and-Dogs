@@ -129,5 +129,60 @@ After ensuring CUDA compatibility, install PyTorch with CUDA support. CHAT GPT r
 
 By carefully managing CUDA compatibility and installing PyTorch correctly, you can leverage the power of GPU acceleration for your deep learning tasks.
 
-## Conclusion
-Understanding and carefully handling the shape of the fully connected layer input (`fc1`) is essential for the successful implementation of a CNN for binary cat vs. dog classification. Regularly visualize tensor shapes during development to ensure proper alignment in your network architecture.
+# Notes and useful information
+
+- Here I put some examples to delete rows in a pandas dataframe based on the columns' value:
+
+```markdown
+### Deleting Rows Based on Column Value in Pandas DataFrames
+
+When working with pandas DataFrames in Python, it is often necessary to delete rows based on certain conditions in one or more columns. This can be achieved using various methods, and here are some quick examples:
+
+#### Example 1: Using `drop()` to Delete Rows Based on Column Value
+
+```python
+df.drop(df[df['Fee'] >= 24000].index, inplace=True)
+```
+
+This method involves using the `drop()` function along with boolean indexing. Rows where the condition (`df['Fee'] >= 24000`) is met are identified using `df[df['Fee'] >= 24000].index` and then dropped from the original DataFrame.
+
+#### Example 2: Remove Rows Based on Condition
+
+```python
+df2 = df[df.Fee >= 24000]
+```
+
+Here, a new DataFrame `df2` is created, containing only the rows where the condition (`df.Fee >= 24000`) is satisfied.
+
+#### Example 3: Handling Column Names with Spaces
+
+```python
+df2 = df[df['column name']]
+```
+
+When the column name contains spaces, it should be enclosed in single quotes to avoid syntax errors.
+
+#### Example 4: Using `loc` for Row Deletion
+
+```python
+df2 = df.loc[df["Fee"] >= 24000]
+```
+
+The `loc` method is utilized to select rows based on the specified condition (`df["Fee"] >= 24000`). This is similar to the second example but using `loc` explicitly.
+
+#### Example 5: Deleting Rows Based on Multiple Column Values
+
+```python
+df2 = df[(df['Fee'] >= 22000) & (df['Discount'] == 2300)]
+```
+
+In this example, rows are selected based on the combination of conditions using the logical AND (`&`) operator.
+
+#### Example 6: Drop Rows with None/NaN Values
+
+```python
+df2 = df[df.Discount.notnull()]
+```
+
+Rows containing None or NaN values in the 'Discount' column are dropped using the `notnull()` method.
+
