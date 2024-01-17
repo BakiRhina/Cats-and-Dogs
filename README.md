@@ -28,9 +28,7 @@ An outlier is an object in the dataset that would cause distorsions during the t
 
 When resampling images, see the following figure:
 
-
-
-
+<img width="582" alt="image" src="https://github.com/BakiRhina/Cats-and-Dogs/assets/108484177/a0be8487-a424-438d-a175-bf29ec54a361">
 
 
 ## Neural Network Architecture
