@@ -7,24 +7,24 @@ This project focuses on binary label prediction, specifically distinguishing bet
 
 ## Experimental flow
 
-1. Explore the data.
+1. Explore the data. (Exploratory Data Analysis (EDA))
 
-Here we will analyse the data that has been given to us. How many samples, if there are **null values**, **repeated values**, the information we could extract from the **filenames**, if the **data is balanced or unbalanaced**, dimensions of the images (**width**,**height**, **aspect ratio**, **channels**, ...), distorsions, shape,...
+Here we will analyse the data that has been given to us. Useful information is, among others, the amount of samples, existence of **null values** and **repeated values**, the information we could extract from the **filenames**, if the **data is balanced or unbalanaced**, dimensions of the images (**width**,**height**, **aspect ratio**, **channels**, ...), distorsions, shape,...
 
 - Analyse the data with `.describe()`, `.info()` if using pandas dataframes (recommended to explore data)
 - **Data balance**: Use plots, and dataframes to make sure the data is balanced. Having a balanced data reduces **overfitting**.
 - Analyse the images: shape, channels, aspect ratio...
 - Using `.describe()`, check the images dimensions distributions along the dataset. Use histograms for this (`plt.hist`)
-- The images' shape is quite important when dealing with image files. When processed, a common heigth and width has to be set, so the bigger the aspect ratio, more distorsion there will be. Acquire insights of these feature.
+- The images' shape is quite important when dealing with image files. When processed, a common heigth and width has to be set, so the bigger the aspect ratio, the more distorsion there will be. Acquire insights of these features.
 - **It is a good practice to see how future outliers look when reshaped**. If it is hard for you to recognise what is in the image, imagine how hard it is for the computer.
 - Small images don't give much information and usually most of the details are lost when upscaling them. Bigger images, on the other hand, can also loose important details if excessive downscaling is applied, although it conserves them better than smaller images.
 
 
 2. Data preprocessing.
 
-Once we know our datasets' features, we will proceed to preprocess it. Therefore, outliers will be removed.
+Once we know our datasets' features, we will proceed to preprocess it. Preprocessing englobes **handling missing values** and cleaning the data, **feature engineering**, **data transformation**, dealing with **skewed data** (mostly with numerical features) and handling **outliers**.
 
-An outlier is an object in the dataset that would cause distorsions during the training or it is not of interest (massive values, neither cats or dogs (*although these are difficult to find unless checking manually or with another model already trained*)...).
+An **outlier** is an object in the dataset that would cause distorsions during the training or it is not of interest (massive values, neither cats or dogs (*although these are difficult to find unless checking manually or with another model already trained*)...).
 
 When resampling images, see the following figure:
 
