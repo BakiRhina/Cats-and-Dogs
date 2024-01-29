@@ -7,7 +7,7 @@ This project focuses on binary label prediction, specifically distinguishing bet
 
 ## Experimental flow
 
-1. Explore the data. (Exploratory Data Analysis (EDA))
+1. **Explore the data. (Exploratory Data Analysis (EDA))**
 
 Here we will analyse the data that has been given to us. Useful information is, among others, the amount of samples, existence of **null values** and **repeated values**, the information we could extract from the **filenames**, if the **data is balanced or unbalanaced**, dimensions of the images (**width**,**height**, **aspect ratio**, **channels**, ...), distorsions, shape,...
 
@@ -20,7 +20,7 @@ Here we will analyse the data that has been given to us. Useful information is, 
 - Small images don't give much information and usually most of the details are lost when upscaling them. Bigger images, on the other hand, can also loose important details if excessive downscaling is applied, although it conserves them better than smaller images.
 
 
-2. Data preprocessing.
+2. **Data preprocessing.**
 
 Once we know our datasets' features, we will proceed to preprocess it. Preprocessing englobes **handling missing values** and cleaning the data, **feature engineering**, **data transformation**, dealing with **skewed data** (mostly with numerical features) and handling **outliers**.
 
