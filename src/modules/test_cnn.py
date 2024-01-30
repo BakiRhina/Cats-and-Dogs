@@ -9,14 +9,14 @@ from torchvision import datasets, transforms
 PATH = "C:/Users/Ato/Documents/Programming/Python/catdog/src/datasets"
 
 # Hyperparameters
-batch_size = 16
+batch_size = 32
 lr = 0.001
 momentum = 0.9
 epochs = 2
 
 # Transforms for training set
 train_transform = transforms.Compose([
-  transforms.Resize((256,256)),
+  transforms.Resize((384,256)),
   transforms.ToTensor(),
 ])
 
