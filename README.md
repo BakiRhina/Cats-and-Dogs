@@ -218,3 +218,14 @@ df2 = df[df.Discount.notnull()]
 
 Rows containing None or NaN values in the 'Discount' column are dropped using the `notnull()` method.
 
+
+# To improve performance
+
+If the performance of the model is not good, it may help trying one or some of the following:
+
+- [ ] Experiment with different CNN architectures
+- [ ] Use TensorFlow instead of Pytorch
+- [ ] Experiment with different kernel sizes (convultional networks)
+- [ ] Experiment with different hyperparameters
+- [ ] Experiment with different thresholds when removing outliers
+- [ ] Add neuron dropout
